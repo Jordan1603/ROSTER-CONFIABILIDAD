@@ -13,11 +13,11 @@ const DayCell: React.FC<DayCellProps> = ({ date, category, onClick }) => {
   const dayNumber = date.getDate();
   const categoryDetails = category ? CATEGORY_DETAILS[category] : null;
 
-  const baseClasses = "aspect-square flex items-center justify-center rounded-full text-xs font-semibold cursor-pointer transition-all duration-200 transform hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-400";
+  const baseClasses = "aspect-square flex items-center justify-center rounded-full text-xs font-semibold cursor-pointer transition-all duration-200 transform hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500";
   
   const categoryClasses = categoryDetails 
     ? categoryDetails.color
-    : "bg-slate-700 text-slate-300 hover:bg-slate-600";
+    : "bg-gray-200 text-gray-700 hover:bg-gray-300";
 
   return (
     <button

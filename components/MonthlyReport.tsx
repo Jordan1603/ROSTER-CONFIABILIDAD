@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Employee, EmployeeRoster, Category } from '../types';
 import { CATEGORIES, CATEGORY_DETAILS } from '../constants';
@@ -80,16 +81,16 @@ const MonthlyReport: React.FC<MonthlyReportProps> = ({ employee, roster, year, m
   const maxCount = Math.max(...(Object.values(reportData) as number[]), 1);
 
   return (
-    <div className="bg-slate-800/50 p-4 rounded-lg shadow-lg border border-slate-700">
+    <div className="bg-gray-50/50 p-4 rounded-lg shadow-lg border border-gray-200">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-        <h3 className="text-lg font-bold text-white mb-2 sm:mb-0">REPORTE DEL 16 AL 15</h3>
+        <h3 className="text-lg font-bold text-gray-800 mb-2 sm:mb-0">REPORTE DEL 16 AL 15</h3>
         <div className="flex items-center space-x-2">
-          <label htmlFor="month-select" className="text-sm text-slate-400">Mes de corte:</label>
+          <label htmlFor="month-select" className="text-sm text-gray-600">Mes de corte:</label>
           <select
             id="month-select"
             value={month}
             onChange={handleMonthSelect}
-            className="bg-slate-700 border border-slate-600 rounded-md px-2 py-1 text-white text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="bg-white border border-gray-300 rounded-md px-2 py-1 text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {monthNames.map((name, index) => (
               <option key={index} value={index}>{name}</option>
@@ -102,19 +103,19 @@ const MonthlyReport: React.FC<MonthlyReportProps> = ({ employee, roster, year, m
         {/* Report Table */}
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse">
-            <tbody className="bg-slate-900/50">
-              <tr className="border-b border-slate-700">
-                <th className="p-2 text-left font-semibold text-slate-300 w-1/3">TRABAJADOR</th>
-                <td className="p-2 text-slate-100" colSpan={2}>{employee?.name || 'N/A'}</td>
+            <tbody className="bg-white/50">
+              <tr className="border-b border-gray-200">
+                <th className="p-2 text-left font-semibold text-gray-600 w-1/3">TRABAJADOR</th>
+                <td className="p-2 text-gray-800" colSpan={2}>{employee?.name || 'N/A'}</td>
               </tr>
-              <tr className="border-b border-slate-700">
-                <th className="p-2 text-left font-semibold text-slate-300">CORTE DEL MES (16-15)</th>
-                <td className="p-2 text-slate-100" colSpan={2}>{getMonthRangeText()}</td>
+              <tr className="border-b border-gray-200">
+                <th className="p-2 text-left font-semibold text-gray-600">CORTE DEL MES (16-15)</th>
+                <td className="p-2 text-gray-800" colSpan={2}>{getMonthRangeText()}</td>
               </tr>
               {CATEGORIES.map(category => (
-                <tr key={category} className="border-b border-slate-700 last:border-b-0">
-                  <th className="p-2 text-left font-normal text-slate-300">{`${category}`}</th>
-                  <td className="p-2 text-center text-slate-100 font-mono w-16">{reportData[category]}</td>
+                <tr key={category} className="border-b border-gray-200 last:border-b-0">
+                  <th className="p-2 text-left font-normal text-gray-600">{`${category}`}</th>
+                  <td className="p-2 text-center text-gray-800 font-mono w-16">{reportData[category]}</td>
                   <td className={`p-2 text-center w-12 font-bold ${CATEGORY_DETAILS[category].color}`}>
                     {CATEGORY_DETAILS[category].abbreviation}
                   </td>
@@ -125,7 +126,7 @@ const MonthlyReport: React.FC<MonthlyReportProps> = ({ employee, roster, year, m
         </div>
 
         {/* Bar Chart */}
-        <div className="bg-slate-900/50 p-4 rounded-lg flex flex-col justify-center min-h-[300px]">
+        <div className="bg-white/50 p-4 rounded-lg flex flex-col justify-center min-h-[300px]">
             <div className="w-full h-64 flex items-end justify-around space-x-1" aria-label="Gráfico de días por categoría">
                 {CATEGORIES.map(category => {
                     const count = reportData[category];
@@ -134,10 +135,10 @@ const MonthlyReport: React.FC<MonthlyReportProps> = ({ employee, roster, year, m
 
                     return (
                         <div key={category} className="flex-1 flex flex-col items-center justify-end h-full text-center" title={`${category}: ${count} días`}>
-                            <span className="text-sm font-bold text-slate-100">{count > 0 ? count : ''}</span>
+                            <span className="text-sm font-bold text-gray-800">{count > 0 ? count : ''}</span>
                             <div className={`w-3/4 max-w-10 rounded-t-sm transition-all duration-500 ease-out ${details.color}`} style={{ height: `${heightPercentage}%` }}>
                             </div>
-                            <span className="text-xs text-slate-400 mt-1 h-10 flex items-start justify-center pt-1" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>{chartLabels[category]}</span>
+                            <span className="text-xs text-gray-500 mt-1 h-10 flex items-start justify-center pt-1" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>{chartLabels[category]}</span>
                         </div>
                     );
                 })}

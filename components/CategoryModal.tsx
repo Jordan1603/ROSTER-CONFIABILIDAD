@@ -35,14 +35,14 @@ const CategoryModal: React.FC<CategoryModalProps> = ({ isOpen, date, currentCate
   const formattedDate = date.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-      <div ref={modalRef} className="bg-slate-800 rounded-lg shadow-xl w-full max-w-md p-6">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div ref={modalRef} className="bg-white rounded-lg shadow-xl w-full max-w-md p-5">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <h2 className="text-xl font-bold text-white">Seleccionar Categoría</h2>
-            <p className="text-sm text-yellow-300 capitalize">{formattedDate}</p>
+            <h2 className="text-xl font-bold text-gray-900">Seleccionar Categoría</h2>
+            <p className="text-sm text-blue-500 capitalize">{formattedDate}</p>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors">&times;</button>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-800 transition-colors text-2xl leading-none">&times;</button>
         </div>
         
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -57,10 +57,10 @@ const CategoryModal: React.FC<CategoryModalProps> = ({ isOpen, date, currentCate
           ))}
         </div>
         
-        <div className="mt-6 border-t border-slate-700 pt-4">
+        <div className="mt-6 border-t border-gray-200 pt-4">
           <button
             onClick={() => onSelectCategory(null)}
-            className="w-full bg-slate-600 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded transition-colors"
+            className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded transition-colors"
           >
             Quitar Categoría
           </button>

@@ -28,9 +28,9 @@ const MonthCalendar: React.FC<MonthCalendarProps> = ({ year, month, employeeRost
   const weekDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
 
   return (
-    <div className="bg-slate-800/50 p-3 rounded-lg shadow-lg">
-      <h3 className="font-bold text-center mb-2 capitalize text-yellow-300">{monthName}</h3>
-      <div className="grid grid-cols-7 gap-1 text-center text-xs text-slate-400 mb-1">
+    <div className="bg-gray-50/50 p-2 rounded-lg border border-gray-200">
+      <h3 className="font-bold text-center mb-2 capitalize text-blue-600">{monthName}</h3>
+      <div className="grid grid-cols-7 gap-1 text-center text-xs text-gray-500 mb-1">
         {weekDays.map((day, index) => (
           <div key={index} className="font-semibold">{day}</div>
         ))}

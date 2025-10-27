@@ -23,7 +23,7 @@ export const EMPLOYEES: Employee[] = [
   { name: 'Samir Aldair Cedillo Preciado', position: 'INGENIERO DE CONFIABILIDAD', location: 'TOROMOCHO' },
 ];
 
-export const YEAR = 2025;
+export const START_YEAR = 2025;
 
 export const CATEGORIES = Object.values(Category);
 

@@ -1,11 +1,13 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { RosterData, Category } from './types';
-import { EMPLOYEES, YEAR } from './constants';
+import { EMPLOYEES, START_YEAR } from './constants';
 import EmployeeSelector from './components/EmployeeSelector';
 import YearCalendar from './components/YearCalendar';
 import CategoryModal from './components/CategoryModal';
 import Legend from './components/Legend';
 import MonthlyReport from './components/MonthlyReport';
+import YearSelector from './components/YearSelector';
 
 const formatDateKey = (date: Date): string => {
   const year = date.getFullYear();
@@ -19,7 +21,10 @@ const App: React.FC = () => {
   const [selectedEmployee, setSelectedEmployee] = useState<string>(EMPLOYEES[0].name);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalDate, setModalDate] = useState<Date | null>(null);
+  const [selectedYear, setSelectedYear] = useState<number>(START_YEAR);
   const [selectedReportMonth, setSelectedReportMonth] = useState<number>(7); // Default to August
+
+  const availableYears = [2025, 2026, 2027, 2028];
 
   useEffect(() => {
     try {
@@ -77,23 +82,35 @@ const App: React.FC = () => {
   const selectedEmployeeObject = EMPLOYEES.find(emp => emp.name === selectedEmployee);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
-      <header className="bg-slate-950/70 backdrop-blur-sm p-4 sticky top-0 z-20 border-b border-slate-700">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-             <svg className="w-10 h-10 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-white">KOMATSU</h1>
-              <p className="text-sm text-slate-400">Roster de Confiabilidad {YEAR}</p>
-             </div>
+    <div className="min-h-screen bg-gray-100 text-gray-800 font-sans">
+      <header className="bg-white/80 backdrop-blur-sm p-3 sticky top-0 z-20 border-b border-gray-200">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            {/* Komatsu Mitsui Logo */}
+            <div className="flex h-10 overflow-hidden rounded-lg shadow-sm border border-gray-200/50">
+              <div className="bg-[#0033A0] flex items-center justify-center px-4">
+                <span className="text-white text-xl font-black tracking-tighter">KOMATSU</span>
+              </div>
+              <div className="bg-gray-200 flex items-center justify-center px-4">
+                <span className="text-black text-xl font-black italic -skew-x-12">MITSUI</span>
+              </div>
+            </div>
+            <h1 className="text-md sm:text-lg font-bold text-gray-700 whitespace-nowrap">
+              Roster de Confiabilidad
+            </h1>
           </div>
+          <YearSelector
+            years={availableYears}
+            selectedYear={selectedYear}
+            onSelectYear={setSelectedYear}
+          />
         </div>
       </header>
 
-      <div className="container mx-auto p-4 md:p-6 grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div className="p-2 md:p-4 grid grid-cols-1 md:grid-cols-12 gap-4">
         <aside className="md:col-span-3 lg:col-span-2">
-          <div className="bg-slate-800 rounded-lg p-4 sticky top-24">
-            <h2 className="text-lg font-semibold mb-3 border-b border-slate-600 pb-2">Empleados</h2>
+          <div className="bg-white rounded-lg shadow-md p-3 sticky top-24">
+            <h2 className="text-lg font-semibold mb-3 border-b border-gray-200 pb-2">Empleados</h2>
             <EmployeeSelector
               employees={EMPLOYEES}
               selectedEmployee={selectedEmployee}
@@ -104,13 +121,13 @@ const App: React.FC = () => {
         </aside>
 
         <main className="md:col-span-9 lg:col-span-10">
-          <div className="bg-slate-800 rounded-lg p-4 md:p-6 space-y-8">
+          <div className="bg-white rounded-lg shadow-md p-4 space-y-6">
               <div>
-                <h2 className="text-xl md:text-2xl font-bold mb-1 text-yellow-400">
+                <h2 className="text-xl md:text-2xl font-bold mb-1 text-blue-600">
                   {selectedEmployee}
                 </h2>
                 {selectedEmployeeObject && (
-                  <span className="block text-base text-slate-300 font-normal">
+                  <span className="block text-base text-gray-600 font-normal">
                     {selectedEmployeeObject.position} - {selectedEmployeeObject.location}
                   </span>
                 )}
@@ -119,13 +136,13 @@ const App: React.FC = () => {
               <MonthlyReport
                 employee={selectedEmployeeObject}
                 roster={employeeRoster}
-                year={YEAR}
+                year={selectedYear}
                 month={selectedReportMonth}
                 onMonthChange={setSelectedReportMonth}
               />
 
               <YearCalendar
-                year={YEAR}
+                year={selectedYear}
                 employeeRoster={employeeRoster}
                 onDayClick={handleDayClick}
               />

@@ -16,10 +16,10 @@ const EmployeeSelector: React.FC<EmployeeSelectorProps> = ({ employees, selected
           <li key={employee.name}>
             <button
               onClick={() => onSelectEmployee(employee.name)}
-              className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ${
+              className={`w-full text-left px-2 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 ${
                 selectedEmployee === employee.name
-                  ? 'bg-yellow-400 text-slate-900 shadow-md'
-                  : 'text-slate-300 hover:bg-slate-700 hover:text-white'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-blue-100 hover:text-blue-700'
               }`}
             >
               {employee.name}
