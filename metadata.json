@@ -1,0 +1,5 @@
+{
+  "name": "Komatsu Roster App",
+  "description": "An annual employee roster for Komatsu's reliability department to track work schedules and categories for the year 2025. All schedules are public within the team for complete transparency.",
+  "requestFramePermissions": []
+}
