@@ -1,0 +1,70 @@
+{
+  "empleados": [
+    {
+      "id": "raul_rosalino",
+      "nombre": "Raul Rosalino Perez Gomez",
+      "cargo": "JEFE DE FIABILIDAD - CALLAO",
+      "meses": {
+        "enero": {
+          "descanso": 1,
+          "vacaciones": 4,
+          "turno_lima": 2,
+          "mina_dia": 1,
+          "mina_noche": 2,
+          "descanso_medico": 3,
+          "visita_mina": 3,
+          "curso": 0,
+          "feriados": 1
+        },
+        "febrero": {
+          "descanso": 2,
+          "vacaciones": 3,
+          "turno_lima": 1,
+          "mina_dia": 2,
+          "mina_noche": 1,
+          "descanso_medico": 2,
+          "visita_mina": 1,
+          "curso": 1,
+          "feriados": 0
+        }
+      },
+      "calendario": {
+        "enero": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        "febrero": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      }
+    },
+    {
+      "id": "carlos_ortiz",
+      "nombre": "Carlos Humberto Ortiz Yauri",
+      "cargo": "SUPERVISOR DE CONFIABILIDAD - CALLAO",
+      "meses": {
+        "enero": {
+          "descanso": 1,
+          "vacaciones": 4,
+          "turno_lima": 2,
+          "mina_dia": 1,
+          "mina_noche": 2,
+          "descanso_medico": 3,
+          "visita_mina": 3,
+          "curso": 0,
+          "feriados": 1
+        },
+        "febrero": {
+          "descanso": 2,
+          "vacaciones": 3,
+          "turno_lima": 1,
+          "mina_dia": 2,
+          "mina_noche": 1,
+          "descanso_medico": 2,
+          "visita_mina": 1,
+          "curso": 1,
+          "feriados": 0
+        }
+      },
+      "calendario": {
+        "enero": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        "febrero": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      }
+    }
+  ]
+}
